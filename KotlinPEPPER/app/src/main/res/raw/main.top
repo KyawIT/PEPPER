@@ -1,0 +1,12 @@
+topic: ~main()
+
+# The concept symbol represents a set of phrases.
+# [] defines a choise
+# {} defines an optional part
+concept:(main) [
+"Was willst du machen?"
+]
+
+# human driven discussion with one level depth
+# u: defines a user rule: u: (human input) robot output
+u: (~main)  \pau=2000\ Lass mich mal nachdenken. ^endDiscuss(main) robot answer
