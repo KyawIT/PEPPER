@@ -3,8 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
 import { Component } from '@angular/core';
 import { Storys, StorysService } from '../storys.service';
 import { Observable, debounceTime, distinctUntilChanged, filter, from, map, startWith, switchMap, tap } from 'rxjs';
@@ -29,38 +29,38 @@ export class StorySelectionComponent {
 
   constructor(public storyService: StorysService) { }
 
- //public gStorys$ = this.storyService.getTagalongstories();
+  //public gStorys$ = this.storyService.getTagalongstories();
 
- deleteStory(index: number) {
-  this.storyService.deleteTagalongstory(index).subscribe(
-    () => {
-      this.input$ = this.getStorys();
-    }
-  );
-}
+  deleteStory(index: number) {
+    this.storyService.deleteTagalongstory(index).subscribe(
+      () => {
+        this.input$ = this.getStorys();
+      }
+    );
+  }
 
-getStorys(): Observable<Storys[]>{
-  return this.formGroup.valueChanges.pipe(
-    startWith({nameFilter: ''}),
-    debounceTime(200),
-    distinctUntilChanged(),
-    tap(x => console.log(x)),
-    switchMap(group => this.storyService.getTagalongstories().pipe(map(x => {
-     return x.filter(y => y.name.toLowerCase().includes(group.nameFilter!.toLowerCase()))
-    })))
+  getStorys(): Observable<Storys[]> {
+    return this.formGroup.valueChanges.pipe(
+      startWith({ nameFilter: '' }),
+      debounceTime(200),
+      distinctUntilChanged(),
+      tap(x => console.log(x)),
+      switchMap(group => this.storyService.getTagalongstories().pipe(map(x => {
+        return x.filter(y => y.name.toLowerCase().includes(group.nameFilter!.toLowerCase()))
+      })))
     );;
-}
+  }
 
- public formGroup = new FormGroup({
-  nameFilter: new FormControl(''),
-})
+  public formGroup = new FormGroup({
+    nameFilter: new FormControl(''),
+  })
 
   // filter methode
- public input$ = this.getStorys();
+  public input$ = this.getStorys();
 
 
 
-  toggle(event: MatSlideToggleChange, story: Storys){
+  toggle(event: MatSlideToggleChange, story: Storys) {
     console.log("toggle");
     const checked = event.checked;
     story.isEnabled = checked;

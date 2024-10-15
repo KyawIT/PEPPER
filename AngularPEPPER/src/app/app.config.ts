@@ -10,7 +10,8 @@ export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes, withComponentInputBinding()),
     {
       provide: STORY_URL,
-      useValue: 'http://152.67.78.190:8080/tagalongstories'
+      //useValue: 'http://152.67.78.190:8080/tagalongstories'
+      useValue: 'http://localhost:8080/api/tagalongstories'
     },
     provideHttpClient(),]
 };
