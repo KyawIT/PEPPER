@@ -8,5 +8,6 @@ export const routes: Routes = [
   {path: 'tagalongstory', component: TagalongstoryComponent},
   {path: '', component: HomePageComponent},
   {path: 'memory', component: MemoryComponent},
+  {path: 'createstory', component: CreatestoryComponent},
   {path: 'createstory/:id', component: CreatestoryComponent}
 ];

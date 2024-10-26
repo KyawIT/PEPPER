@@ -4,3 +4,12 @@ export interface ITagalongStory {
     storyIcon: string;
     isEnabled: string;
 }
+
+export interface IStep {
+    id: number;
+    duration: number;
+    moveNameAndDuration: string;
+    text: string;
+    image: string;
+    index: number;
+}

@@ -71,4 +71,12 @@ export class TagalongstoryComponent {
       );
     }
   }
+
+  public deleteStory(id: number): void {
+    // Delete the story with the given ID
+    this.http.delete(this.baseUrl + '/' + id).subscribe(() => {
+      // Fetch the stories again to reflect the changes
+      this.ngOnInit();
+    });
+  }
 }
